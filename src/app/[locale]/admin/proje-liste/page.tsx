@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useParams } from "next/navigation"; // locale almak için
 import { Link } from "@/i18n/navigation";
 
 type Project = {
@@ -12,19 +13,14 @@ type Project = {
   slug: string;
 };
 
-interface PageProps {
-  params: {
-    locale: "tr" | "en" | "de";
-  };
-}
-
 const getImageSrc = (src?: string) => {
   if (!src || typeof src !== "string") return "/images/default-project.jpg";
   return src.startsWith("/") ? src : `/uploads/${src}`;
 };
 
-export default function Page({ params }: PageProps) {
-  const locale = params.locale;
+export default function Page() {
+  const params = useParams();
+  const locale = params?.locale ?? "tr"; // default tr yap
 
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -34,9 +30,7 @@ export default function Page({ params }: PageProps) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:3000/api/projects", {
-        cache: "no-store",
-      });
+      const res = await fetch("/api/projects", { cache: "no-store" });
       if (!res.ok) throw new Error("Projeler yüklenemedi.");
       const data = await res.json();
       setProjects(data.projects || []);
@@ -53,11 +47,10 @@ export default function Page({ params }: PageProps) {
   }, []);
 
   const deleteProject = async (_id: string) => {
-    const confirmed = confirm("Bu projeyi silmek istediğinize emin misiniz?");
-    if (!confirmed) return;
+    if (!confirm("Bu projeyi silmek istediğinize emin misiniz?")) return;
 
     try {
-      const res = await fetch("http://localhost:3000/api/projects", {
+      const res = await fetch("/api/projects", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ _id }),
