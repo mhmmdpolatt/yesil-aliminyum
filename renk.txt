@@ -1,0 +1,43 @@
+ Yeşil (#2e7d32): Firma ismiyle uyumlu, doğallığı ve güveni simgeler.
+ ⚪️ Gri tonları (#e0e0e0 - #9e9e9e): Alüminyum hissi verir, teknolojik görünüm.
+ ⚫️ Koyu gri / siyah (#212121): Başlıklar ve kontrast için.
+
+
+ import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { jwtVerify } from "jose";
+
+const JWT_SECRET = process.env.JWT_SECRET!;
+const encoder = new TextEncoder();
+
+export async function middleware(req: NextRequest) {
+  const token = req.cookies.get("token")?.value;
+  const url = req.nextUrl.clone();
+
+  const pathnameParts = url.pathname.split("/");
+  const locale = pathnameParts[1]; // örn: tr
+  const isAdminPath = pathnameParts[2] === "admin";
+
+  if (isAdminPath) {
+    if (!token) {
+      url.pathname = `/${locale}/giris`;
+      return NextResponse.redirect(url);
+    }
+
+    try {
+      // jwtVerify async olduğu için await kullanıyoruz
+      await jwtVerify(token, encoder.encode(JWT_SECRET));
+      return NextResponse.next(); // Token geçerli
+    } catch (err) {
+      console.log("Token doğrulama hatası:", err);
+      url.pathname = `/${locale}/giris`;
+      return NextResponse.redirect(url);
+    }
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ["/tr/admin/:path*", "/en/admin/:path*", "/de/admin/:path*"],
+};

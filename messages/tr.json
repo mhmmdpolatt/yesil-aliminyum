@@ -1,0 +1,142 @@
+{
+  
+ "Navbar": {
+    "home": "Anasayfa",
+    "about": "Hakkımızda",
+    "projects": "Projeler",
+    "contact": "İletişim",
+    "language": "Dil"
+  },
+  "HomeHeroSection":{
+    "motionh1":"Yeşil Aliminyum",
+    "motionp":" Almanya ve Türkiye’de cephe sistemlerinde uzman çözüm ortağınız.",
+    "motioncontackt":"İletişime Geçin",
+    "motiona1":"Projeleri Gör"
+  },
+  "HizmetStandartlariKalite": {
+    "title": "Hizmet Standartlarımız ve Kalite",
+    "services": [
+      {
+        "title": "Endüstriyel Uzmanlık",
+        "desc": "Sektördeki uzun yıllara dayanan tecrübemiz ile yüksek kaliteli çözümler sunuyoruz."
+      },
+      {
+        "title": "Mühendislik ve Teknoloji",
+        "desc": "İleri mühendislik teknikleri ve modern teknolojiyi birleştiriyoruz."
+      },
+      {
+        "title": "Güvenlik ve Dayanıklılık",
+        "desc": "Projelerimizde maksimum güvenlik ve uzun ömürlü çözümler sağlıyoruz."
+      },
+      {
+        "title": "Zamanında Teslimat",
+        "desc": "Teslimat sürecini titizlikle yönetiyor, zamanında teslim garantisi sunuyoruz."
+      },
+      {
+        "title": "Uzman Kadro",
+        "desc": "Alanında uzman ve deneyimli kadromuzla her projeye özel destek veriyoruz."
+      }
+    ]
+  },
+  "CozumOrtaklari":{
+    "cozumOrtaklari":"Çözüm Ortaklarımız"
+  },
+  "CompanyStats": {
+    "title": "Şirketimiz Hakkında",
+    "stats": [
+      {
+        "value": "50+ ",
+        "label": "Çalışan"
+      },
+      {
+        "value": "2",
+        "label": "Ofis"
+      },
+      {
+        "value": "7+",
+        "label": "Tamamlanan Proje"
+      },
+      {
+        "value": "2",
+        "label": "Faaliyet Ülkesi"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Öne Çıkan Projeler",
+    "sms-campus": {
+      "title": "SMS Kampüsü",
+      "description": "Almanya’da gerçekleştirilen modern alüminyum cephe sistem projesi.",
+      "buttonText": "Projeyi Gör"
+    },
+    "comfort-hotel": {
+      "title": "Comfort Hotel Hildesheim",
+      "description": "Comfort Hotel’in alüminyum cephe sistemleri ile yenilenmesi.",
+      "buttonText": "Detayları Gör"
+    },
+    "zollamt-bonn": {
+      "title": "Zollamt Bonn",
+      "description": "20.000 m² seramik cephe uygulaması ile enerji verimli ve dayanıklı yapı.",
+      "buttonText": "İncele"
+    }
+  },
+  "HomeServicesPreview": {
+    "title": "Hizmetlerimiz",
+    "buttonText": "Detayları Gör",
+
+    "services": [
+      {
+        "title": "PR Cephe Sistemleri",
+        "description": "Modern ve estetik cephe kaplamaları ile binalarınıza değer katıyoruz."
+      },
+      {
+        "title": "Havalandırmalı Cephe Sistemleri",
+        "description": "Isı yalıtımı ve estetik sağlayan arka havalandırmalı dış cephe çözümleri."
+      },
+      {
+        "title": "Yangın Kapıları",
+        "description": "Güvenliğinizi artıran sertifikalı yangın dayanımlı kapı sistemleri."
+      },
+      {
+        "title": "Özel Konstrüksiyonlar",
+        "description": "Mimari ihtiyaçlara özel alüminyum ve çelik konstrüksiyon çözümleri."
+      },
+      {
+        "title": "Kaynak Sistemleri (MIG & MAG)",
+        "description": "Endüstriyel kaynak ihtiyaçları için profesyonel MIG ve MAG kaynak çözümleri."
+      }
+    ]
+  },
+  "AboutPage":{
+    "about": "Hakkımızda",
+  "about_description": "Yeşil Alüminyum, alüminyum cephe, konstrüksiyon ve mühendislik hizmetlerinde 20+ yıllık tecrübesiyle sektöre değer katmaya devam ediyor.",
+  "history_title": "Tarihçe",
+  "history_text": "2000'li yılların başında Giresun'da kurulan firmamız, ilk günden beri kalitesiyle, mühendislik bilgisiyle ve zamanında teslim prensibiyle fark yaratmıştır. 20+ yılda ulusal ve uluslararası pek çok prestijli projede görev almayı başarmıştır.",
+  "mission": "Misyon",
+  "mission_text": "Mühendislik ve kalitemizle sektöre değer katarak, kalıcı ve fonksiyonel yapılar inşa etmek.",
+  "vision": "Vizyon",
+  "vision_text": "Ulusal ve uluslararası alanda tercih edilen, lider ve güvenilir çözüm ortağı olmak.",
+  "values": "Değerler",
+  "values_list": ["Kalite", "Güven", "Yenilik", "Sürdürülebilirlik", "Müşteri memnuniyeti"],
+  "team_title": "Ekibimiz",
+  "loading": "Yükleniyor...",
+  "no_team": "Henüz ekip üyesi yok.",
+  "error": "Veriler alınamadı"
+  },
+  "footer": {
+    "companyName": "Yeşil Alüminyum",
+    "description": "Yeşil Alüminyum, alüminyum cephe ve konstrüksiyon hizmetlerinde mühendislik ve kalitesiyle fark yaratmaya devam ediyor.",
+    "quickLinks": "Hızlı Linkler",
+    "contact": "İletişim",
+    "address": "Adres: İnönü Cad. No: 181-183, Giresun Merkez",
+    "phone": "Telefon: +49 172 6635 362",
+    "email": "E-posta: s.aydin@yesilaluminyum.com",
+    "workingHours": "Çalışma Saatleri: Pzt-Cuma 09:00 - 18:00",
+    "locationTitle": "Konumumuz",
+    "locationPopup": "Yeşil Alüminyum Giresun Ofisi",
+    "copyright": "Tüm Hakları Saklıdır.",
+    "developer": "Tasarım & Geliştirme"
+  }
+  
+
+}

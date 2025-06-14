@@ -1,0 +1,139 @@
+{
+ "Navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "projects": "Projects",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "HomeHeroSection":{
+    "motionh1":"It is us who shape the future",
+    "motionp":" Professional aluminum profile extrusion for your projects",
+    "motioncontackt":"Contact us",
+    "motiona1":"Projeleri Gör"
+  },
+  "HizmetStandartlariKalite": {
+    "title": "Our Service Standards & Quality",
+    "services": [
+      {
+        "title": "Industrial Expertise",
+        "desc": "We offer high-quality solutions backed by many years of experience in the industry."
+      },
+      {
+        "title": "Engineering & Technology",
+        "desc": "We combine advanced engineering techniques with modern technology."
+      },
+      {
+        "title": "Safety & Durability",
+        "desc": "Our projects ensure maximum safety and long-lasting solutions."
+      },
+      {
+        "title": "On-Time Delivery",
+        "desc": "We manage the delivery process with precision and guarantee on-time completion."
+      },
+      {
+        "title": "Expert Team",
+        "desc": "Our experienced and specialized team provides tailored support for every project."
+      }
+    ]
+  },
+  "CozumOrtaklari":{
+    "cozumOrtaklari":"Our Solution Partners"
+  },
+  "CompanyStats": {
+    "title": "About Our Company",
+    "stats": [
+      {
+        "value": "50+",
+        "label": "Employees"
+      },
+      {
+        "value": "2",
+        "label": "Offices"
+      },
+      {
+        "value": "7+",
+        "label": "Completed Projects"
+      },
+      {
+        "value": "2",
+        "label": "Countries Active"
+      }
+    ]
+  },
+   "projects": {
+    "title": "Featured Projects",
+    "sms-campus": {
+      "title": "SMS Campus",
+      "description": "A modern aluminum facade project completed in Germany.",
+      "buttonText": "View Project"
+    },
+    "comfort-hotel": {
+      "title": "Comfort Hotel Hildesheim",
+      "description": "Renovation of Comfort Hotel with custom aluminum facade systems.",
+      "buttonText": "View Details"
+    },
+    "zollamt-bonn": {
+      "title": "Zollamt Bonn",
+      "description": "20,000 m² ceramic facade application providing energy efficiency and durability.",
+      "buttonText": "Explore"
+    }
+  },
+  "HomeServicesPreview": {
+    "title": "Our Services",
+    "buttonText": "View Details",
+
+    "services": [
+      {
+        "title": "PR Facade Systems",
+        "description": "We enhance your buildings with modern and aesthetic facade cladding."
+      },
+      {
+        "title": "Ventilated Facade Systems",
+        "description": "Rear-ventilated facade solutions that provide insulation and elegant design."
+      },
+      {
+        "title": "Fire Doors",
+        "description": "Certified fire-resistant doors to improve building safety."
+      },
+      {
+        "title": "Special Constructions",
+        "description": "Custom aluminum and steel constructions tailored to architectural needs."
+      },
+      {
+        "title": "Welding Systems (MIG & MAG)",
+        "description": "Professional MIG and MAG welding solutions for industrial needs."
+      }
+    ]
+  },
+  "AboutPage":{
+    "about": "About Us",
+    "about_description": "Yeşil Alüminyum continues to add value to the sector with over 20 years of experience in aluminum facades, construction, and engineering services.",
+    "history_title": "History",
+    "history_text": "Founded in the early 2000s in Giresun, our company has stood out from day one with its quality, engineering expertise, and commitment to on-time delivery. Over 20+ years, it has participated in many prestigious national and international projects.",
+    "mission": "Mission",
+    "mission_text": "To build permanent and functional structures by adding value to the industry with our engineering and quality.",
+    "vision": "Vision",
+    "vision_text": "To be a preferred, leading, and reliable solution partner nationally and internationally.",
+    "values": "Values",
+    "values_list": ["Quality", "Trust", "Innovation", "Sustainability", "Customer satisfaction"],
+    "team_title": "Our Team",
+    "loading": "Loading...",
+    "no_team": "No team members yet.",
+    "error": "Failed to fetch data"
+  },
+  "footer": {
+    "companyName": "Yesil Aluminum",
+    "description": "Yeşil Aluminum continues to stand out with engineering and quality in aluminum façade and construction services.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "address": "Address: Inönü Street No: 181-183, Giresun Center",
+    "phone": "Phone: +49 172 6635 362",
+    "email": "Email: s.aydin@yesilaluminyum.com",
+    "workingHours": "Working Hours: Mon-Fri 09:00 - 18:00",
+    "locationTitle": "Our Location",
+    "locationPopup": "Yesil Aluminum Giresun Office",
+    "copyright": "All Rights Reserved.",
+    "developer": "Design & Development"
+  } 
+}

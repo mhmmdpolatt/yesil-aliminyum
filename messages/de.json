@@ -1,0 +1,142 @@
+{
+  
+  "Navbar": {
+    "home": "Startseite",
+    "about": "Über Uns",
+    "projects": "Projekte",
+    "contact": "Kontakt",
+    "language": "Sprache"
+  },
+  "HomeHeroSection":{
+    "motionh1":"Zukunft gestalten wir",
+    "motionp":"Professionelle Aluminiumprofil-Extrusion für Ihre Projekte",
+    "motioncontackt":"Kontaktieren Sie uns",
+    "motiona1":"Projekte ansehen"
+    
+  },
+   "HizmetStandartlariKalite": {
+    "title": "Unsere Servicequalität & Standards",
+    "services": [
+      {
+        "title": "Industrielle Fachkompetenz",
+        "desc": "Wir bieten hochwertige Lösungen basierend auf langjähriger Branchenerfahrung."
+      },
+      {
+        "title": "Ingenieurwesen & Technologie",
+        "desc": "Wir verbinden fortschrittliche Ingenieurtechniken mit moderner Technologie."
+      },
+      {
+        "title": "Sicherheit & Langlebigkeit",
+        "desc": "Unsere Projekte bieten maximale Sicherheit und dauerhafte Lösungen."
+      },
+      {
+        "title": "Pünktliche Lieferung",
+        "desc": "Wir steuern den Lieferprozess präzise und garantieren termingerechte Fertigstellung."
+      },
+      {
+        "title": "Fachkundiges Team",
+        "desc": "Unser erfahrenes und spezialisiertes Team bietet maßgeschneiderte Unterstützung für jedes Projekt."
+      }
+    ]
+  },
+  "CozumOrtaklari":{
+    "cozumOrtaklari":"Unsere Lösungspartner"
+  },
+   "CompanyStats": {
+    "title": "Über unser Unternehmen",
+    "stats": [
+      {
+        "value": "50+",
+        "label": "Mitarbeiter"
+      },
+      {
+        "value": "2",
+        "label": "Büros"
+      },
+      {
+        "value": "7+",
+        "label": "Abgeschlossene Projekte"
+      },
+      {
+        "value": "2",
+        "label": "Aktive Länder"
+      }
+    ]
+  },
+
+ "projects": {
+    "title": "Ausgewählte Projekte",
+    "sms-campus": {
+      "title": "SMS Campus",
+      "description": "Ein modernes Aluminiumfassadenprojekt in Deutschland.",
+      "buttonText": "Projekt ansehen"
+    },
+    "comfort-hotel": {
+      "title": "Comfort Hotel Hildesheim",
+      "description": "Sanierung des Comfort Hotels mit maßgeschneiderten Aluminiumfassadensystemen.",
+      "buttonText": "Details ansehen"
+    },
+    "zollamt-bonn": {
+      "title": "Zollamt Bonn",
+      "description": "20.000 m² Keramikfassade für Energieeffizienz und Langlebigkeit.",
+      "buttonText": "Entdecken"
+    }
+  },
+ "HomeServicesPreview": {
+    "title": "Unsere Leistungen",
+    "buttonText": "Mehr erfahren",
+
+    "services": [
+      {
+        "title": "PR-Fassadensysteme",
+        "description": "Moderne und ästhetische Fassadenverkleidungen für Ihre Gebäude."
+      },
+      {
+        "title": "Hinterlüftete Fassaden",
+        "description": "Hinterlüftete Fassadenlösungen für Wärmeisolierung und elegantes Design."
+      },
+      {
+        "title": "Brandschutztüren",
+        "description": "Zertifizierte feuerbeständige Türen für erhöhte Sicherheit."
+      },
+      {
+        "title": "Sonderkonstruktionen",
+        "description": "Spezielle Aluminium- und Stahlkonstruktionen nach architektonischen Anforderungen."
+      },
+      {
+        "title": "Schweißsysteme (MIG & MAG)",
+        "description": "Professionelle MIG- und MAG-Schweißlösungen für den industriellen Einsatz."
+      }
+    ]
+  },
+  "AboutPage":{
+    "about": "Über Uns",
+    "about_description": "Yeşil Alüminyum bringt seit über 20 Jahren mit Aluminiumfassaden-, Konstruktions- und Ingenieurdienstleistungen einen Mehrwert für die Branche.",
+    "history_title": "Geschichte",
+    "history_text": "Unser Unternehmen wurde Anfang der 2000er Jahre in Giresun gegründet und hebt sich seit dem ersten Tag durch Qualität, Ingenieurswissen und termingerechte Lieferung hervor. In über 20 Jahren war es an vielen prestigeträchtigen nationalen und internationalen Projekten beteiligt.",
+    "mission": "Mission",
+    "mission_text": "Durch unsere Ingenieurkunst und Qualität dauerhafte und funktionale Bauwerke schaffen, die der Branche einen Mehrwert bieten.",
+    "vision": "Vision",
+    "vision_text": "Ein bevorzugter, führender und verlässlicher Lösungspartner auf nationaler und internationaler Ebene zu sein.",
+    "values": "Werte",
+    "values_list": ["Qualität", "Vertrauen", "Innovation", "Nachhaltigkeit", "Kundenzufriedenheit"],
+    "team_title": "Unser Team",
+    "loading": "Wird geladen...",
+    "no_team": "Noch keine Teammitglieder.",
+    "error": "Daten konnten nicht abgerufen werden"
+  },
+  "footer": {
+    "companyName": "Yeşil Aluminium",
+    "description": "Yeşil Aluminium setzt weiterhin Maßstäbe in der Fassaden- und Konstruktionsbranche mit Technik und Qualität.",
+    "quickLinks": "Schnellzugriff",
+    "contact": "Kontakt",
+    "address": "Adresse: Inönü Straße Nr. 181-183, Giresun Zentrum",
+    "phone": "Telefon: +49 172 6635 362",
+    "email": "E-Mail: s.aydin@yesilaluminyum.com",
+    "workingHours": "Arbeitszeiten: Mo-Fr 09:00 - 18:00",
+    "locationTitle": "Unser Standort",
+    "locationPopup": "Yeşil Aluminium Büro in Giresun",
+    "copyright": "Alle Rechte vorbehalten.",
+    "developer": "Design & Entwicklung"
+  }
+}
