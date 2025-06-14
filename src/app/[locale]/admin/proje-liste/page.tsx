@@ -12,16 +12,20 @@ type Project = {
   slug: string;
 };
 
-type Props = {
-  locale: "tr" | "en" | "de";
-};
+interface PageProps {
+  params: {
+    locale: "tr" | "en" | "de";
+  };
+}
 
 const getImageSrc = (src?: string) => {
   if (!src || typeof src !== "string") return "/images/default-project.jpg";
   return src.startsWith("/") ? src : `/uploads/${src}`;
 };
 
-export default function ProjelerTable({ locale: _locale }: Props) {
+export default function Page({ params }: PageProps) {
+  const locale = params.locale;
+
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,15 +39,10 @@ export default function ProjelerTable({ locale: _locale }: Props) {
       });
       if (!res.ok) throw new Error("Projeler yüklenemedi.");
       const data = await res.json();
-      console.log("Projeler:", data);
-
       setProjects(data.projects || []);
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError(String(err));
-      }
+      if (err instanceof Error) setError(err.message);
+      else setError(String(err));
     } finally {
       setLoading(false);
     }
@@ -70,11 +69,8 @@ export default function ProjelerTable({ locale: _locale }: Props) {
 
       setProjects((prev) => prev.filter((p) => p._id !== _id));
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        alert(`Hata: ${err.message}`);
-      } else {
-        alert(`Hata: ${String(err)}`);
-      }
+      if (err instanceof Error) alert(`Hata: ${err.message}`);
+      else alert(`Hata: ${String(err)}`);
     }
   };
 
