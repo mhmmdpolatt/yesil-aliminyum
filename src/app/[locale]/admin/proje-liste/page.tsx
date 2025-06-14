@@ -21,7 +21,7 @@ const getImageSrc = (src?: string) => {
   return src.startsWith("/") ? src : `/uploads/${src}`;
 };
 
-export default function ProjelerTable({ locale }: Props) {
+export default function ProjelerTable({ locale: _locale }: Props) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -38,8 +38,12 @@ export default function ProjelerTable({ locale }: Props) {
       console.log("Projeler:", data);
 
       setProjects(data.projects || []);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError(String(err));
+      }
     } finally {
       setLoading(false);
     }
@@ -65,8 +69,12 @@ export default function ProjelerTable({ locale }: Props) {
       if (!res.ok) throw new Error(result.message || "Silinemedi.");
 
       setProjects((prev) => prev.filter((p) => p._id !== _id));
-    } catch (err: any) {
-      alert(`Hata: ${err.message}`);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        alert(`Hata: ${err.message}`);
+      } else {
+        alert(`Hata: ${String(err)}`);
+      }
     }
   };
 
@@ -110,6 +118,10 @@ export default function ProjelerTable({ locale }: Props) {
 
                 <td className="p-3 border-b font-semibold text-gray-800">
                   {project.title.tr ?? "-"}
+                </td>
+
+                <td className="p-3 border-b">
+                  {project.description.tr ?? "-"}
                 </td>
 
                 <td className="p-3 border-b text-center">

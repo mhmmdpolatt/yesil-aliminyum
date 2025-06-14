@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../../public/images/logo3.jpeg";
@@ -8,43 +8,48 @@ import { useTranslations } from "next-intl";
 
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
+// Leaflet CSS importunu unutma (next.config.js veya global css'de)
+// import "leaflet/dist/leaflet.css";
+
 import "leaflet/dist/images/marker-icon-2x.png";
 import "leaflet/dist/images/marker-shadow.png";
 
-// Lazy load leaflet components
+// React Leaflet bileşenlerini lazy load ile yükle
 const MapContainer = React.lazy(() =>
-  import("react-leaflet").then((module) => ({ default: module.MapContainer }))
+  import("react-leaflet").then((mod) => ({ default: mod.MapContainer }))
 );
 const TileLayer = React.lazy(() =>
-  import("react-leaflet").then((module) => ({ default: module.TileLayer }))
+  import("react-leaflet").then((mod) => ({ default: mod.TileLayer }))
 );
 const Marker = React.lazy(() =>
-  import("react-leaflet").then((module) => ({ default: module.Marker }))
+  import("react-leaflet").then((mod) => ({ default: mod.Marker }))
 );
 const Popup = React.lazy(() =>
-  import("react-leaflet").then((module) => ({ default: module.Popup }))
+  import("react-leaflet").then((mod) => ({ default: mod.Popup }))
 );
-
-let L;
-if (typeof window !== "undefined") {
-  L = require("leaflet");
-
-  L.Icon.Default.mergeOptions({
-    iconRetinaUrl: "/marker-icon-2x.png",
-    iconUrl: "/marker-icon.png",
-    shadowUrl: "/marker-shadow.png",
-  });
-}
 
 function Footer() {
   const [isMapLoaded, setIsMapLoaded] = useState(false);
+  const [L, setL] = useState<typeof import("leaflet") | null>(null);
   const t = useTranslations("footer");
 
   useEffect(() => {
     setIsMapLoaded(true);
+
+    // Leaflet ikon ayarlarını dinamik import ile yap
+    if (typeof window !== "undefined") {
+      import("leaflet").then((leaflet) => {
+        leaflet.Icon.Default.mergeOptions({
+          iconRetinaUrl: "/marker-icon-2x.png",
+          iconUrl: "/marker-icon.png",
+          shadowUrl: "/marker-shadow.png",
+        });
+        setL(leaflet);
+      });
+    }
   }, []);
 
-  const position = [40.9185, 38.3896];
+  const position: [number, number] = [40.9185, 38.3896];
 
   const quickLinks = [
     { name: "Anasayfa", href: "/" },
@@ -145,21 +150,29 @@ function Footer() {
               {t("locationTitle")}
             </h3>
             <div className="w-full h-48 md:h-64 bg-gray-800 rounded-lg overflow-hidden">
-              {isMapLoaded ? (
-                <MapContainer
-                  zoom={13}
-                  scrollWheelZoom={false}
-                  className="w-full h-full z-0"
-                  style={{ zIndex: 0 }}
-                  attributionControl={false}
-                  zoomControl={false}
-                  center={position}
+              {isMapLoaded && L ? (
+                <Suspense
+                  fallback={
+                    <div className="flex items-center justify-center w-full h-full text-gray-400">
+                      Harita Yükleniyor...
+                    </div>
+                  }
                 >
-                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                  <Marker position={position}>
-                    <Popup>{t("locationPopup")}</Popup>
-                  </Marker>
-                </MapContainer>
+                  <MapContainer
+                    zoom={13}
+                    scrollWheelZoom={false}
+                    className="w-full h-full z-0"
+                    style={{ zIndex: 0 }}
+                    attributionControl={false}
+                    zoomControl={false}
+                    center={position}
+                  >
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                    <Marker position={position}>
+                      <Popup>{t("locationPopup")}</Popup>
+                    </Marker>
+                  </MapContainer>
+                </Suspense>
               ) : (
                 <div className="flex items-center justify-center w-full h-full text-gray-400">
                   Harita Yükleniyor...

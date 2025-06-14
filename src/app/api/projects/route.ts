@@ -92,14 +92,14 @@ export async function POST(req: Request) {
         imageSrc: newProject.imageSrc,
       },
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("POST /api/projects error:", err);
 
     return NextResponse.json(
       {
         success: false,
         message: "Sunucu hatası oluştu. Lütfen tekrar deneyin.",
-        error: err.message,
+        error: err instanceof Error ? err.message : String(err),
       },
       { status: 500 }
     );
@@ -164,14 +164,14 @@ export async function DELETE(req: Request) {
       success: true,
       message: "Proje başarıyla silindi.",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("DELETE /api/projects/delete hatası:", error);
 
     return NextResponse.json(
       {
         success: false,
         message: "Sunucu hatası oluştu.",
-        error: error.message,
+        error: error instanceof Error ? error.message : String(error),
       },
       { status: 500 }
     );

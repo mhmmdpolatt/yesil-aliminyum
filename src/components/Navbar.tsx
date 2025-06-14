@@ -5,8 +5,6 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
-import Logo from "../../public/images/logo.png";
-import Logo2 from "../../public/images/logo2.jpeg";
 import Logo3 from "../../public/images/logo3.jpeg"; // Adjust the path as necessary
 // Adjust the path as necessary
 // Adjust the path as necessary

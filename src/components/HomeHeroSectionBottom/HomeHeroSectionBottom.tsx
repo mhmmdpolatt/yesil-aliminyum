@@ -2,8 +2,6 @@ import React from "react";
 import resim1 from "../../../public/images/allhotel.jpeg";
 import resim2 from "../../../public/images/hotel.jpeg";
 import resim3 from "../../../public/images/monche.jpeg";
-import resim4 from "../../../public/images/waldheim.jpeg";
-
 import Image from "next/image";
 
 function HomeHeroSectionBottom() {

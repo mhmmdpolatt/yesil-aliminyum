@@ -39,8 +39,12 @@ export default function LoginForm() {
           router.push(`/${locale}/admin/dashboard`);
         }, 1500);
       }
-    } catch (error) {
-      setMesaj("Sunucu hatası.");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setMesaj(`Sunucu hatası: ${error.message}`);
+      } else {
+        setMesaj("Sunucu hatası.");
+      }
     } finally {
       setLoading(false);
     }

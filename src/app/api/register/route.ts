@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import User, { IUser } from "../../../../models/Users"; // User model importu
+import User from "../../../../models/Users"; // User model importu
 import Users from "../../../../models/Users";
 import dbConnect from "../../../../lib/mongodb"; // az önce yazdığımız user modeli
 

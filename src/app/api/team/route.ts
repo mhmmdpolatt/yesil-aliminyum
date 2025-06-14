@@ -63,10 +63,14 @@ export async function POST(req: Request) {
       message: "Ekip üyesi başarıyla eklendi.",
       data: newMember,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
     return NextResponse.json(
-      { success: false, message: "Sunucu hatası", error: error.message },
+      {
+        success: false,
+        message: "Sunucu hatası",
+        error: error instanceof Error ? error.message : String(error),
+      },
       { status: 500 }
     );
   }
@@ -111,10 +115,14 @@ export async function DELETE(req: Request) {
       success: true,
       message: "Ekip üyesi ve resmi başarıyla silindi.",
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
     return NextResponse.json(
-      { success: false, message: "Sunucu hatası", error: error.message },
+      {
+        success: false,
+        message: "Sunucu hatası",
+        error: error instanceof Error ? error.message : String(error),
+      },
       { status: 500 }
     );
   }

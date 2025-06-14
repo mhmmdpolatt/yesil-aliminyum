@@ -31,8 +31,12 @@ export default function RegisterForm() {
         setKullaniciAdi("");
         setParola("");
       }
-    } catch (err) {
-      setMesaj("Sunucu hatası.");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setMesaj(`Sunucu hatası: ${err.message}`);
+      } else {
+        setMesaj("Sunucu hatası.");
+      }
     } finally {
       setLoading(false);
     }

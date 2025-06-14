@@ -24,14 +24,14 @@ export async function GET(
       success: true,
       data: project,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("GET /api/projects/[slug] error:", error);
 
     return NextResponse.json(
       {
         success: false,
         message: "Sunucu hatası.",
-        error: error.message,
+        error: error instanceof Error ? error.message : String(error),
       },
       { status: 500 }
     );
