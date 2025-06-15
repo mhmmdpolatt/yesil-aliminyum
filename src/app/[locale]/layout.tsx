@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   openGraph: {
     title: "Yeşil Alüminyum | Projelerimiz",
@@ -39,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Yeşil Alüminyum",
     images: [
       {
-        url: "https://yesilaluminyum.com/og-image.jpg",
+        url: "https://yesilaluminyum.com/images/YesilAliminyumLogo.png", // ✅ public/images altındaki dosya
         width: 1200,
         height: 630,
         alt: "Yeşil Alüminyum Proje Görseli",

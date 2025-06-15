@@ -145,5 +145,19 @@
       "services": "Dienstleistungen",
       "contact": "Kontakt"
     }
+  },
+  "seo": {
+    "projects": {
+      "title": "Yeşil Alüminyum | Unsere Projekte",
+      "description": "Entdecken Sie unsere abgeschlossenen Projekte mit modernen Fassadensystemen.",
+      "ogDescription": "Sehen Sie sich die von Yeşil Alüminyum realisierten Projekte mit modernen Fassaden-, Tür- und Aluminiumsystemen an.",
+      "ogImageAlt": "Yeşil Alüminyum Projektbild"
+    },
+    "contact": {
+    "title": "Yeşil Alüminyum | Kontakt",
+    "description": "Kontaktieren Sie uns. Unser Expertenteam beantwortet gerne all Ihre Fragen.",
+    "ogDescription": "Finden Sie unsere Kontaktdaten inklusive Telefon, E-Mail und Adresse, um Yeşil Alüminyum zu erreichen.",
+    "ogImageAlt": "Yeşil Alüminyum Kontaktbild"
+  }
   }
 }

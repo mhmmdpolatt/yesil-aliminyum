@@ -1,17 +1,49 @@
 // app/[locale]/projeler/page.tsx
 
+import { Metadata } from "next";
 import { Project } from "../../../../types/project";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: { locale: "tr" | "en" | "de" };
 };
-const getImageSrc = (src?: string) => {
-  if (!src || typeof src !== "string") return "/images/default-project.jpg";
-  return src.startsWith("/") ? src : `/uploads/${src}`;
-};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations("seo.projects");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("ogDescription"),
+      url: `https://yesilaluminyum.com/${params.locale}/projeler`,
+      siteName: "Yeşil Alüminyum",
+      images: [
+        {
+          url: `https://yesilaluminyum.com/images/og-proje.jpg`,
+          width: 1200,
+          height: 630,
+          alt: t("ogImageAlt"),
+        },
+      ],
+      locale:
+        params.locale === "tr"
+          ? "tr_TR"
+          : params.locale === "en"
+          ? "en_US"
+          : "de_DE",
+      type: "website",
+    },
+  };
+}
 
 const ProjelerPage = async ({ params: { locale } }: Props) => {
   async function getProjects(): Promise<Project[]> {

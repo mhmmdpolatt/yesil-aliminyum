@@ -142,5 +142,19 @@
       "services": "Services",
       "contact": "Contact"
     }
+  },
+  "seo": {
+    "projects": {
+      "title": "Yesil Aluminium | Our Projects",
+      "description": "Explore our completed projects with modern facade systems.",
+      "ogDescription": "Check out the projects completed by Yesil Aluminium with modern facade, aluminum joinery and door solutions.",
+      "ogImageAlt": "Yesil Aluminium Project Image"
+    },
+    "contact": {
+    "title": "Yesil Aluminium | Contact",
+    "description": "Get in touch with us. Our expert team is happy to answer all your questions.",
+    "ogDescription": "Find our contact details including phone, email, and address to reach Yesil Aluminium.",
+    "ogImageAlt": "Yesil Aluminium Contact Image"
+  }
   } 
 }

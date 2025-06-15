@@ -143,6 +143,20 @@
       "services": "Hizmetler",
       "contact": "İletişim"
     }
+  },
+  "seo": {
+    "projects": {
+      "title": "Yeşil Alüminyum | Projelerimiz",
+      "description": "Modern cephe sistemleriyle tamamlanan projelerimizi inceleyin.",
+      "ogDescription": "Modern cephe sistemleri, alüminyum doğrama ve kapı çözümleriyle Yeşil Alüminyum’un tamamladığı projelere göz atın.",
+      "ogImageAlt": "Yeşil Alüminyum Proje Görseli"
+    },
+    "contact": {
+    "title": "Yeşil Alüminyum | İletişim",
+    "description": "Bizimle iletişime geçin. Uzman ekibimiz tüm sorularınızı yanıtlamaktan memnuniyet duyar.",
+    "ogDescription": "Yeşil Alüminyum ile iletişime geçmek için telefon, e-posta veya adres bilgilerimize göz atın.",
+    "ogImageAlt": "Yeşil Alüminyum İletişim Görseli"
+  }
   }
   
 

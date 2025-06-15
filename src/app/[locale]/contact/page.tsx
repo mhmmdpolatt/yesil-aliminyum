@@ -9,7 +9,6 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 
-// 🔧 Tip tanımı
 type MapEmbed = {
   label: string;
   url: string;
@@ -21,21 +20,17 @@ type ContactInfo = {
   emails: string[];
   mapEmbeds: MapEmbed[];
 };
+
 export default function ContactPage() {
   const [contact, setContact] = useState<ContactInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // 🔄 Veriyi çek
   useEffect(() => {
     const fetchContact = async () => {
       try {
         const res = await fetch("/api/contact-info");
-
-        if (!res.ok) {
-          throw new Error("Veri alınamadı");
-        }
-
+        if (!res.ok) throw new Error("Veri alınamadı");
         const data = await res.json();
         setContact(data[0]);
       } catch (err) {
@@ -49,15 +44,8 @@ export default function ContactPage() {
     fetchContact();
   }, []);
 
-  // ⏳ Yüklenme durumu
-  if (loading) {
-    return <p className="p-6 text-center">Yükleniyor...</p>;
-  }
-
-  // ❌ Hata durumu
-  if (error) {
-    return <p className="p-6 text-center text-red-500">{error}</p>;
-  }
+  if (loading) return <p className="p-6 text-center">Yükleniyor...</p>;
+  if (error) return <p className="p-6 text-center text-red-500">{error}</p>;
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
@@ -65,7 +53,6 @@ export default function ContactPage() {
         İletişim
       </h1>
 
-      {/* 🏢 Şirket Bilgileri */}
       <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-10 space-y-4">
         {contact?.addresses?.map((item, index) => (
           <div key={index} className="flex items-center space-x-3">
@@ -93,9 +80,6 @@ export default function ContactPage() {
         ))}
       </div>
 
-      {/* 🗺️ Google Maps */}
-      {/* 🌍 Haritalar */}
-      {/* 🗺️ Google Maps */}
       <div className="mb-10 space-y-8">
         {contact?.mapEmbeds?.map((map, index) => (
           <div key={map._id || index}>
@@ -119,7 +103,6 @@ export default function ContactPage() {
         ))}
       </div>
 
-      {/* 📩 İletişim Formu */}
       <form className="bg-gray-50 p-6 rounded-lg shadow-md space-y-6">
         <div className="flex items-center space-x-3">
           <FaUser className="text-blue-500 w-6 h-6" />
