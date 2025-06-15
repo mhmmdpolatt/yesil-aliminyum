@@ -6,25 +6,8 @@ import Link from "next/link";
 import Logo from "../../../public/images/logo3.jpeg";
 import { useTranslations } from "next-intl";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import dynamic from "next/dynamic";
-import "leaflet/dist/leaflet.css";
 
 // Dinamik importlar (SSR kapalı)
-const MapContainer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.MapContainer),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
-);
-const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
-  ssr: false,
-});
 
 // Tip tanımları
 type MapEmbed = {
@@ -115,8 +98,8 @@ function Footer() {
 
   return (
     <footer className="bg-gray-900 w-screen text-gray-400 py-12 mt-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-9xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
           {/* Logo ve Açıklama */}
           <div className="col-span-1">
             <Link href="/" className="flex items-center mb-4 space-x-2">
@@ -154,16 +137,46 @@ function Footer() {
               {t("quickLinks")}
             </h3>
             <ul>
-              {quickLinks.map((link, idx) => (
-                <li key={idx} className="mb-2">
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-green-500 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+              <li className="mb-2">
+                <Link
+                  href="/"
+                  className="text-gray-400 hover:text-green-500 transition-colors duration-200"
+                >
+                  {t("quickLinksItems.home")}
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link
+                  href="/about"
+                  className="text-gray-400 hover:text-green-500 transition-colors duration-200"
+                >
+                  {t("quickLinksItems.about")}
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link
+                  href="/projects"
+                  className="text-gray-400 hover:text-green-500 transition-colors duration-200"
+                >
+                  {t("quickLinksItems.projects")}
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link
+                  href="/services"
+                  className="text-gray-400 hover:text-green-500 transition-colors duration-200"
+                >
+                  {t("quickLinksItems.services")}
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link
+                  href="/contact"
+                  className="text-gray-400 hover:text-green-500 transition-colors duration-200"
+                >
+                  {t("quickLinksItems.contact")}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -212,40 +225,27 @@ function Footer() {
           </div>
 
           {/* Harita */}
-          <div className="col-span-1">
-            <h3 className="text-xl font-semibold text-gray-100 mb-4">
-              {t("locationTitle")}
-            </h3>
-            <div className="w-full h-48 md:h-64 bg-gray-800 rounded-lg overflow-hidden">
-              {isMapLoaded && L ? (
-                <Suspense
-                  fallback={
-                    <div className="flex items-center justify-center w-full h-full text-gray-400">
-                      Harita Yükleniyor...
-                    </div>
-                  }
-                >
-                  <MapContainer
-                    center={position}
-                    zoom={13}
-                    scrollWheelZoom={false}
-                    className="w-full h-full z-0"
-                    style={{ zIndex: 0 }}
-                    attributionControl={false}
-                    zoomControl={false}
-                  >
-                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                    <Marker position={position}>
-                      <Popup>{t("locationPopup")}</Popup>
-                    </Marker>
-                  </MapContainer>
-                </Suspense>
-              ) : (
-                <div className="flex items-center justify-center w-full h-full text-gray-400">
-                  Harita Yükleniyor...
-                </div>
-              )}
-            </div>
+          <div className="mb-10   ">
+            {contactInfo?.mapEmbeds?.map((map, index) => (
+              <div key={map._id || index}>
+                <h2 className="text-xl font-bold text-gray-100 mb-2 w-1/2">
+                  {map.label === "Türkiye"
+                    ? "🇹🇷 "
+                    : map.label === "Almanya"
+                    ? "🇩🇪 "
+                    : ""}
+                  {map.label} Ofis
+                </h2>
+                <iframe
+                  src={map.url}
+                  width="100%"
+                  height="400"
+                  loading="lazy"
+                  className="rounded-lg shadow-md"
+                  title={`Harita - ${map.label}`}
+                ></iframe>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -257,12 +257,21 @@ function Footer() {
           <p className="mt-2">
             {t("developer")}:{" "}
             <a
-              href="#"
+              href="https://muhammedpolat.vercel.app"
               className="hover:text-green-500"
               target="_blank"
               rel="noopener noreferrer"
             >
-              MHD.DEV | WIZARDS-TECH
+              MHD.DEV
+            </a>{" "}
+            |{" "}
+            <a
+              href="https://wizards-tech.com"
+              className="hover:text-green-500"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WIZARDS-TECH
             </a>
           </p>
         </div>

@@ -135,7 +135,14 @@
     "locationTitle": "Konumumuz",
     "locationPopup": "Yeşil Alüminyum Giresun Ofisi",
     "copyright": "Tüm Hakları Saklıdır.",
-    "developer": "Tasarım & Geliştirme"
+    "developer": "Tasarım & Geliştirme",
+    "quickLinksItems": {
+      "home": "Anasayfa",
+      "about": "Hakkımızda",
+      "projects": "Projeler",
+      "services": "Hizmetler",
+      "contact": "İletişim"
+    }
   }
   
 

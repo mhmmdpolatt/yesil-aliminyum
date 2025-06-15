@@ -137,6 +137,13 @@
     "locationTitle": "Unser Standort",
     "locationPopup": "Yeşil Aluminium Büro in Giresun",
     "copyright": "Alle Rechte vorbehalten.",
-    "developer": "Design & Entwicklung"
+    "developer": "Design & Entwicklung",
+    "quickLinksItems": {
+      "home": "Startseite",
+      "about": "Über Uns",
+      "projects": "Projekte",
+      "services": "Dienstleistungen",
+      "contact": "Kontakt"
+    }
   }
 }

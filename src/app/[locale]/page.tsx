@@ -17,8 +17,8 @@ export default function HomePage() {
       <HomeHeroSectionBottom />
       <HomeServicesPreview />
       <Projeler />
-      <CozumOrtaklari />
       <HizmetStandardıKalite />
+      {/* <CozumOrtaklari /> */}
       <SirketBilgileri />
       <Hakkimizda />
     </div>

@@ -134,6 +134,13 @@
     "locationTitle": "Our Location",
     "locationPopup": "Yesil Aluminum Giresun Office",
     "copyright": "All Rights Reserved.",
-    "developer": "Design & Development"
+    "developer": "Design & Development",
+    "quickLinksItems": {
+      "home": "Home",
+      "about": "About Us",
+      "projects": "Projects",
+      "services": "Services",
+      "contact": "Contact"
+    }
   } 
 }
