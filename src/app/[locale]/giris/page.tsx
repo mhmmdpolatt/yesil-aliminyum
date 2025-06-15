@@ -24,6 +24,7 @@ export default function LoginForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kullaniciAdi, parola }),
+        credentials: "include",
       });
 
       const data = await res.json();
