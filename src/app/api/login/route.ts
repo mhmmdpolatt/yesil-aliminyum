@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     // Örnek: cookie ayarı (prod ortamda secure:true olmalı)
     response.cookies.set("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: false,
       maxAge: 60 * 60, // 1 saat
       path: "/",
       sameSite: "lax",
