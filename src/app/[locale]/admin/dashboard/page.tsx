@@ -72,6 +72,22 @@ export default function AdminPage() {
             </p>
           </div>
         </Link>
+        <Link href={`/${locale}/admin/iletisim-ekle`}>
+          <div className="p-6 bg-white rounded-xl border shadow-md hover:shadow-lg transition hover:-translate-y-1 cursor-pointer text-center">
+            <h2 className="text-xl font-semibold text-[#2E7D32] mb-2">
+              İletişim Bilgisi Ekle
+            </h2>
+            <p className="text-gray-600 text-sm">iletişim bilgileri ekleyin.</p>
+          </div>
+        </Link>
+        <Link href={`/${locale}/admin/iletisim-liste`}>
+          <div className="p-6 bg-white rounded-xl border shadow-md hover:shadow-lg transition hover:-translate-y-1 cursor-pointer text-center">
+            <h2 className="text-xl font-semibold text-[#2E7D32] mb-2">
+              İletişim listele/sil/güncelle
+            </h2>
+            <p className="text-gray-600 text-sm">ilteişim</p>
+          </div>
+        </Link>
 
         <Link href={`/${locale}/admin/dashboard`}>
           <div className="p-6 bg-white rounded-xl border shadow-md hover:shadow-lg transition hover:-translate-y-1 cursor-pointer text-center">

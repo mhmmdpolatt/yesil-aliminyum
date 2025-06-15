@@ -5,38 +5,73 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../../public/images/logo3.jpeg";
 import { useTranslations } from "next-intl";
-
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import dynamic from "next/dynamic";
+import "leaflet/dist/leaflet.css";
 
-// Leaflet CSS importunu unutma (next.config.js veya global css'de)
-// import "leaflet/dist/leaflet.css";
+// Dinamik importlar (SSR kapalı)
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
+);
+const Marker = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Marker),
+  { ssr: false }
+);
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
 
-import "leaflet/dist/images/marker-icon-2x.png";
-import "leaflet/dist/images/marker-shadow.png";
+// Tip tanımları
+type MapEmbed = {
+  label: string;
+  url: string;
+  _id?: string;
+};
 
-// React Leaflet bileşenlerini lazy load ile yükle
-const MapContainer = React.lazy(() =>
-  import("react-leaflet").then((mod) => ({ default: mod.MapContainer }))
-);
-const TileLayer = React.lazy(() =>
-  import("react-leaflet").then((mod) => ({ default: mod.TileLayer }))
-);
-const Marker = React.lazy(() =>
-  import("react-leaflet").then((mod) => ({ default: mod.Marker }))
-);
-const Popup = React.lazy(() =>
-  import("react-leaflet").then((mod) => ({ default: mod.Popup }))
-);
+type Address = {
+  label: string;
+  address: string;
+  _id?: string;
+};
+
+type ContactInfo = {
+  addresses: Address[];
+  phones: string[];
+  emails: string[];
+  mapEmbeds: MapEmbed[];
+  workingHours?: string;
+};
 
 function Footer() {
+  const t = useTranslations("footer");
+
   const [isMapLoaded, setIsMapLoaded] = useState(false);
   const [L, setL] = useState<typeof import("leaflet") | null>(null);
-  const t = useTranslations("footer");
+  const [contactInfo, setContactInfo] = useState<ContactInfo | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setIsMapLoaded(true);
 
-    // Leaflet ikon ayarlarını dinamik import ile yap
+    async function fetchContact() {
+      try {
+        const res = await fetch("/api/contact-info");
+        if (!res.ok) throw new Error("Failed to fetch contact info");
+        const data = await res.json();
+        setContactInfo(data[0]);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchContact();
+
     if (typeof window !== "undefined") {
       import("leaflet").then((leaflet) => {
         leaflet.Icon.Default.mergeOptions({
@@ -50,6 +85,7 @@ function Footer() {
   }, []);
 
   const position: [number, number] = [40.9185, 38.3896];
+  const currentYear = new Date().getFullYear();
 
   const quickLinks = [
     { name: "Anasayfa", href: "/" },
@@ -77,13 +113,11 @@ function Footer() {
     },
   ];
 
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-gray-900 w-screen text-gray-400 py-12 mt-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Logo ve açıklama */}
+          {/* Logo ve Açıklama */}
           <div className="col-span-1">
             <Link href="/" className="flex items-center mb-4 space-x-2">
               <Image
@@ -99,9 +133,9 @@ function Footer() {
             </Link>
             <p className="text-sm leading-relaxed">{t("description")}</p>
             <div className="flex space-x-4 mt-6">
-              {socialLinks.map((link, index) => (
+              {socialLinks.map((link, idx) => (
                 <a
-                  key={index}
+                  key={idx}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -120,8 +154,8 @@ function Footer() {
               {t("quickLinks")}
             </h3>
             <ul>
-              {quickLinks.map((link, index) => (
-                <li key={index} className="mb-2">
+              {quickLinks.map((link, idx) => (
+                <li key={idx} className="mb-2">
                   <Link
                     href={link.href}
                     className="text-gray-400 hover:text-green-500 transition-colors duration-200"
@@ -133,15 +167,48 @@ function Footer() {
             </ul>
           </div>
 
-          {/* İletişim */}
+          {/* İletişim Bilgileri */}
           <div className="col-span-1">
             <h3 className="text-xl font-semibold text-gray-100 mb-4">
               {t("contact")}
             </h3>
-            <p className="mb-2">{t("address")}</p>
-            <p className="mb-2">{t("phone")}</p>
-            <p className="mb-2">{t("email")}</p>
-            <p className="mb-2">{t("workingHours")}</p>
+
+            {loading ? (
+              <p>Yükleniyor...</p>
+            ) : contactInfo ? (
+              <>
+                {/* Adresler */}
+                {contactInfo.addresses.length > 0 &&
+                  contactInfo.addresses.map((addr, i) => (
+                    <p key={i} className="mb-2">
+                      {addr.address}
+                    </p>
+                  ))}
+
+                {/* Telefonlar */}
+                {contactInfo.phones.length > 0 &&
+                  contactInfo.phones.map((phone, i) => (
+                    <p key={i} className="mb-2">
+                      {phone}
+                    </p>
+                  ))}
+
+                {/* E-mailler */}
+                {contactInfo.emails.length > 0 &&
+                  contactInfo.emails.map((email, i) => (
+                    <p key={i} className="mb-2">
+                      {email}
+                    </p>
+                  ))}
+
+                {/* Çalışma Saatleri */}
+                {contactInfo.workingHours && (
+                  <p className="mb-2">{contactInfo.workingHours}</p>
+                )}
+              </>
+            ) : (
+              <p>İletişim bilgileri alınamadı.</p>
+            )}
           </div>
 
           {/* Harita */}
@@ -159,13 +226,13 @@ function Footer() {
                   }
                 >
                   <MapContainer
+                    center={position}
                     zoom={13}
                     scrollWheelZoom={false}
                     className="w-full h-full z-0"
                     style={{ zIndex: 0 }}
                     attributionControl={false}
                     zoomControl={false}
-                    center={position}
                   >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                     <Marker position={position}>
@@ -182,7 +249,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* Telif & Geliştirici */}
+        {/* Telif Hakkı ve Geliştirici */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-400">
           <p>
             &copy; {currentYear} {t("companyName")}. {t("copyright")}

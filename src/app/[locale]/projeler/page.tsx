@@ -32,6 +32,10 @@ const ProjelerPage = async ({ params: { locale } }: Props) => {
   if (!projects.length) {
     return <div className="text-center text-xl py-20">Proje bulunamadı</div>;
   }
+  console.log(
+    "PROJE RESMLERİ",
+    projects.map((p) => p.imageSrc)
+  );
 
   return (
     <div className="max-w-full mx-auto py-14 px-6 ">
@@ -46,7 +50,7 @@ const ProjelerPage = async ({ params: { locale } }: Props) => {
             {/* Görsel Alanı */}
             <div className="w-full md:w-1/2 relative h-64 md:h-auto min-h-[400px]">
               <Image
-                src={getImageSrc(project.imageSrc)}
+                src={project.imageSrc}
                 alt={project.title?.[locale] ?? "Proje görseli"}
                 fill
                 className="object-cover transition-transform duration-500 hover:scale-105"

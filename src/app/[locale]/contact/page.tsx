@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import {
   FaMapMarkerAlt,
   FaEnvelope,
@@ -7,65 +9,117 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 
+// 🔧 Tip tanımı
+type MapEmbed = {
+  label: string;
+  url: string;
+  _id?: string;
+};
+type ContactInfo = {
+  addresses: { label: string; address: string; _id?: string }[];
+  phones: string[];
+  emails: string[];
+  mapEmbeds: MapEmbed[];
+};
 export default function ContactPage() {
+  const [contact, setContact] = useState<ContactInfo | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  // 🔄 Veriyi çek
+  useEffect(() => {
+    const fetchContact = async () => {
+      try {
+        const res = await fetch("/api/contact-info");
+
+        if (!res.ok) {
+          throw new Error("Veri alınamadı");
+        }
+
+        const data = await res.json();
+        setContact(data[0]);
+      } catch (err) {
+        setError("İletişim bilgileri yüklenemedi.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchContact();
+  }, []);
+
+  // ⏳ Yüklenme durumu
+  if (loading) {
+    return <p className="p-6 text-center">Yükleniyor...</p>;
+  }
+
+  // ❌ Hata durumu
+  if (error) {
+    return <p className="p-6 text-center text-red-500">{error}</p>;
+  }
+
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      {/* Title */}
       <h1 className="text-5xl font-semibold mb-10 text-gray-800 tracking-tight">
         İletişim
       </h1>
 
-      {/* Company Information */}
+      {/* 🏢 Şirket Bilgileri */}
       <div className="bg-gray-50 p-6 rounded-lg shadow-md mb-10 space-y-4">
-        <div className="flex items-center space-x-3">
-          <FaMapMarkerAlt className="text-blue-500 w-6 h-6" />
-          <span>
-            Giresun Ofis: Çıtlakkale Mahallesi İnönü Caddesi No: 181-183 İç Kapı
-            No: 108 Merkez/GİRESUN
-          </span>
-        </div>
-        <div className="flex items-center space-x-3">
-          <FaMapMarkerAlt className="text-blue-500 w-6 h-6" />
-          <span>
-            Almanya Ofis: Günzburger Straße 4, 89340 Leipheim, Germany
-          </span>
-        </div>
-        <div className="flex items-center space-x-3">
-          <FaEnvelope className="text-blue-500 w-6 h-6" />
-          <a
-            className="text-blue-500 font-semibold"
-            href="mailto:o.can@yesilaluminyum.com"
-          >
-            o.can@yesilaluminyum.com
-          </a>
-        </div>
-        <div className="flex items-center space-x-3">
-          <FaEnvelope className="text-blue-500 w-6 h-6" />
-          <a
-            className="text-blue-500 font-semibold"
-            href="mailto:s.aydin@yesilaluminyum.com"
-          >
-            s.aydin@yesilaluminyum.com
-          </a>
-        </div>
-        <div className="flex items-center space-x-3">
-          <FaPhone className="text-blue-500 w-6 h-6" />
-          <span>+49 172 6635 362</span>
-        </div>
+        {contact?.addresses?.map((item, index) => (
+          <div key={index} className="flex items-center space-x-3">
+            <FaMapMarkerAlt className="text-blue-500 w-6 h-6" />
+            <span>
+              <strong>{item.label}:</strong> {item.address}
+            </span>
+          </div>
+        ))}
+
+        {contact?.emails?.map((email, index) => (
+          <div key={index} className="flex items-center space-x-3">
+            <FaEnvelope className="text-blue-500 w-6 h-6" />
+            <a className="text-blue-500 font-semibold" href={`mailto:${email}`}>
+              {email}
+            </a>
+          </div>
+        ))}
+
+        {contact?.phones?.map((phone, index) => (
+          <div key={index} className="flex items-center space-x-3">
+            <FaPhone className="text-blue-500 w-6 h-6" />
+            <span>{phone}</span>
+          </div>
+        ))}
       </div>
 
-      {/* Google Maps iframe */}
-      <div className="mb-10">
-        <iframe
-          src="https://www.google.com/maps?q=Günzburger Straße 4, 89340 Leipheim, Germany&output=embed"
-          width="100%"
-          height="400"
-          loading="lazy"
-          className="rounded-lg shadow-md"
-        ></iframe>
+      {/* 🗺️ Google Maps */}
+      {/* 🌍 Haritalar */}
+      {/* 🗺️ Google Maps */}
+      <div className="mb-10 space-y-8">
+        {contact?.mapEmbeds?.map((map, index) => (
+          <div key={map._id || index}>
+            <h2 className="text-xl font-bold text-gray-700 mb-2">
+              {map.label === "Türkiye"
+                ? "🇹🇷 "
+                : map.label === "Almanya"
+                ? "🇩🇪 "
+                : ""}
+              {map.label} Ofis
+            </h2>
+            <iframe
+              src={map.url}
+              width="100%"
+              height="400"
+              loading="lazy"
+              className="rounded-lg shadow-md"
+              title={`Harita - ${map.label}`}
+            ></iframe>
+          </div>
+        ))}
       </div>
 
-      {/* Contact Form */}
+      {/* 📩 İletişim Formu */}
       <form className="bg-gray-50 p-6 rounded-lg shadow-md space-y-6">
         <div className="flex items-center space-x-3">
           <FaUser className="text-blue-500 w-6 h-6" />
