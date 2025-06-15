@@ -75,13 +75,13 @@ export default function Hakkimizda() {
           <h3 className="text-2xl font-semibold mb-4 text-[#2E7D32]">
             {t("values")}
           </h3>
-          {/* <ul className="text-gray-600 list-inside list-disc">
-            {t<string[]>("values_list", { returnObjects: true }).map(
-              (value, index) => (
-                <li key={index}>{value}</li>
-              )
-            )}
-          </ul> */}
+          <ul className="text-gray-600 list-inside list-disc">
+            <li>{t("values_list.0")}</li>
+            <li>{t("values_list.1")}</li>
+            <li>{t("values_list.2")}</li>
+            <li>{t("values_list.3")}</li>
+            <li>{t("values_list.4")}</li>
+          </ul>
         </div>
       </div>
 

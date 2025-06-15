@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
-import Logo3 from "../../public/images/logo3.jpeg"; // Adjust the path as necessary
+import Logo3 from "../../public/images/YeşilAlüminyumLogo.png"; // Adjust the path as necessary
 // Adjust the path as necessary
 // Adjust the path as necessary
 import {
@@ -56,41 +56,8 @@ export default function Navbar() {
             <span>s.aydin@yesilaluminyum.com</span>
           </div>
         </div>
-        <div className="flex items-center gap-4 text-sm">
-          <a
-            href="https://facebook.com/yesilaluminyum"
-            target="_blank"
-            aria-label="Facebook"
-            className="hover:text-cyan-600"
-          >
-            <FaFacebookF size={16} />
-          </a>
-          <a
-            href="https://twitter.com/yesilaluminyum"
-            target="_blank"
-            aria-label="Twitter"
-            className="hover:text-cyan-600"
-          >
-            <FaTwitter size={16} />
-          </a>
-          <a
-            href="https://instagram.com/yesilaluminyum"
-            target="_blank"
-            aria-label="Instagram"
-            className="hover:text-cyan-600"
-          >
-            <FaInstagram size={16} />
-          </a>
-          <a
-            href="https://linkedin.com/company/yesilaluminyum"
-            target="_blank"
-            aria-label="LinkedIn"
-            className="hover:text-cyan-600"
-          >
-            <FaLinkedinIn size={16} />
-          </a>
-          <LanguageSwitcher />
-        </div>
+        {<div className="flex items-center gap-4 text-sm"></div>}
+        <LanguageSwitcher />
       </div>
 
       {/* Ana Navbar */}
@@ -116,7 +83,6 @@ export default function Navbar() {
                   height={40}
                   className="h-10"
                 />
-                <h1 className="text-emerald-500 ">Yeşil Aliminyum</h1>
               </Link>
 
               {/* Desktop Menu */}

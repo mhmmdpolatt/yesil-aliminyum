@@ -3,7 +3,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../../public/images/logo3.jpeg";
+import Logo from "../../../public/images/YeşilAlüminyumLogo.png";
 import { useTranslations } from "next-intl";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
@@ -108,11 +108,8 @@ function Footer() {
                 alt="Logo"
                 width={150}
                 height={40}
-                className="h-10 w-auto"
+                className="h-10 w-1/2"
               />
-              <h1 className="text-emerald-400 font-bold text-2xl">
-                Yeşil Alüminyum
-              </h1>
             </Link>
             <p className="text-sm leading-relaxed">{t("description")}</p>
             <div className="flex space-x-4 mt-6">

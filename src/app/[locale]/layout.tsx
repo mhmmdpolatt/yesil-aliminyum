@@ -6,6 +6,7 @@ import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer/Footer";
+import WhatsAppButton from "@/components/WhatsappButton";
 
 export const metadata: Metadata = {
   title: "Yeşil Alüminyum | Dış Cephe ve Alüminyum Sistemleri",
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
     "PVC Doğrama",
     "Alüminyum Montaj",
   ],
+  icons: {
+    icon: "/favicon.ico", // veya başka türde .png/.svg desteği de var
+  },
   authors: [{ name: "Yeşil Alüminyum", url: "https://yesilaluminyum.com" }],
   robots: {
     index: true,
@@ -65,6 +69,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <Navbar />
           {children}
+          <WhatsAppButton />
           <Footer />
         </NextIntlClientProvider>
       </body>
